@@ -26,9 +26,46 @@ The project follows a layered data design:
 - **Silver**: cleaned and flattened parquet datasets
 - **Gold**: analytics-ready datasets (planned)
 
+## Architecture Diagram
+```
+
+            +----------------------+
+            |  Wikimedia Sources   |
+            +----------------------+
+               |              |
+               |              |
+               v              v
+    +----------------+   +----------------+
+    | RecentChanges  |   | Pageviews Top  |
+    |   SSE Stream   |   |     REST API   |
+    +----------------+   +----------------+
+            |                    |
+            +---------+----------+
+                      |
+                      v
+             +------------------+
+             |     Bronze       |
+             |  Raw JSON/JSONL  |
+             | Partitioned Data |
+             +------------------+
+                      |
+                      v
+             +------------------+
+             |      Silver      |
+             |  Clean Parquet   |
+             |  Structured Data |
+             +------------------+
+                      |
+                      v
+             +------------------+
+             |       Gold       |
+             | Analytics Tables |
+             | (Future Work)    |
+             +------------------+
+```
 ## Project Structure
 
-```text
+```
 wikistream-lakehouse/
 ├── src/
 │   ├── ingest/
