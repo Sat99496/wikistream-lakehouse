@@ -1,16 +1,20 @@
 import argparse
 import json
 from pathlib import Path
+
 import requests
 
-from src.ingest.storage import current_partition, bronze_dir, ensure_dir
+from src.ingest.storage import partition_for_date, bronze_dir, ensure_dir
 
 BASE = "https://wikimedia.org/api/rest_v1/metrics/pageviews/top"
+
 
 def main(project: str, access: str, year: int, month: int, day: int, out: str | None) -> None:
     url = f"{BASE}/{project}/{access}/{year}/{month:02d}/{day:02d}"
 
-    part = current_partition()
+    dt = f"{year:04d}-{month:02d}-{day:02d}"
+    part = partition_for_date(dt, hour="00")
+
     out_path = Path(out) if out else (bronze_dir("pageviews_top", part) / "pageviews_top.json")
     ensure_dir(out_path.parent)
 
@@ -31,6 +35,7 @@ def main(project: str, access: str, year: int, month: int, day: int, out: str | 
 
     print(f"Fetched: {url}")
     print(f"Wrote to: {out_path}")
+
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
