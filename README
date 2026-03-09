@@ -1,12 +1,53 @@
-# WikiStream Lakehouse (Day 1)
+# WikiStream Lakehouse
 
-Day 1 delivers two ingestion sources:
-- Wikipedia RecentChanges (SSE stream) -> JSONL
-- Wikimedia Pageviews Top (REST API) -> JSON
+WikiStream Lakehouse is a small data engineering project that ingests Wikimedia data and organizes it using a lakehouse-style architecture.
 
-## Setup
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+Current data sources:
+- Wikipedia **RecentChanges** event stream
+- Wikimedia **Pageviews Top** REST API
 
+The pipeline stores raw data in a Bronze layer and transforms it into structured parquet datasets in a Silver layer.
+
+## Project Goal
+
+The goal of this project is to practice and demonstrate:
+
+- stream and API ingestion
+- partitioned data lake storage
+- idempotent pipeline design
+- Bronze to Silver transformations
+- parquet-based analytics workflows
+
+## Architecture
+
+The project follows a layered data design:
+
+- **Bronze**: raw ingested data
+- **Silver**: cleaned and flattened parquet datasets
+- **Gold**: analytics-ready datasets (planned)
+
+## Project Structure
+
+```text
+wikistream-lakehouse/
+├── src/
+│   ├── ingest/
+│   │   ├── storage.py
+│   │   ├── fetch_recentchanges.py
+│   │   ├── fetch_recentchanges_api.py
+│   │   ├── fetch_pageviews.py
+│   │   └── backfill_pageviews.py
+│   ├── transform/
+│   │   ├── recentchanges_to_parquet.py
+│   │   ├── pageviews_top_to_parquet.py
+│   │   └── bronze_to_silver.py
+│   ├── query/
+│   │   └── duckdb_queries.py
+│   └── gold/
+├── data/
+│   ├── bronze/
+│   ├── silver/
+│   └── gold/
+├── requirements.txt
+├── .gitignore
+└── README.md
