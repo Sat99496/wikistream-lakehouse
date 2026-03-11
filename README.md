@@ -18,9 +18,6 @@ The goal of this project is to practice and demonstrate:
 - Bronze to Silver transformations
 - parquet-based analytics workflows
 
-## Architecture
-
-The project follows a layered data design:
 
 ## Architecture
 
