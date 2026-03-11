@@ -22,9 +22,13 @@ The goal of this project is to practice and demonstrate:
 
 The project follows a layered data design:
 
-- **Bronze**: raw ingested data
-- **Silver**: cleaned and flattened parquet datasets
-- **Gold**: analytics-ready datasets (planned)
+## Architecture
+
+The project follows a layered data design:
+
+- **Bronze**: raw ingested JSON/JSONL data from Wikimedia APIs
+- **Silver**: cleaned and structured Parquet datasets
+- **Gold**: analytics-ready datasets built with DuckDB
 
 ## Architecture Diagram
 ```
@@ -63,6 +67,21 @@ The project follows a layered data design:
                         |     Prefect      |
                         |   Pipeline Flow  |
                         +------------------+
+
+
+```
+## Gold Datasets
+
+The pipeline produces the following analytics tables:
+
+| Dataset | Description |
+|------|------|
+| `bot_vs_human.parquet` | Comparison of bot edits vs human edits |
+| `edits_per_hour.parquet` | Wikipedia edits aggregated by hour |
+| `pageviews_daily_top.parquet` | Top viewed Wikipedia pages per day |
+```
+
+Location:
 ```
 ## Project Structure
 
