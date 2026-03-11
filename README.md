@@ -81,7 +81,6 @@ The pipeline produces the following analytics tables:
 | `pageviews_daily_top.parquet` | Top viewed Wikipedia pages per day |
 ```
 
-Location:
 ```
 ## Project Structure
 
