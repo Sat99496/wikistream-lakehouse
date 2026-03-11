@@ -79,9 +79,8 @@ The pipeline produces the following analytics tables:
 | `bot_vs_human.parquet` | Comparison of bot edits vs human edits |
 | `edits_per_hour.parquet` | Wikipedia edits aggregated by hour |
 | `pageviews_daily_top.parquet` | Top viewed Wikipedia pages per day |
-```
 
-```
+
 ## Project Structure
 
 ```
