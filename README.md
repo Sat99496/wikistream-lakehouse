@@ -29,39 +29,40 @@ The project follows a layered data design:
 ## Architecture Diagram
 ```
 
-            +----------------------+
-            |  Wikimedia Sources   |
-            +----------------------+
-               |              |
-               |              |
-               v              v
-    +----------------+   +----------------+
-    | RecentChanges  |   | Pageviews Top  |
-    |   SSE Stream   |   |     REST API   |
-    +----------------+   +----------------+
-            |                    |
-            +---------+----------+
-                      |
-                      v
-             +------------------+
-             |     Bronze       |
-             |  Raw JSON/JSONL  |
-             | Partitioned Data |
-             +------------------+
-                      |
-                      v
-             +------------------+
-             |      Silver      |
-             |  Clean Parquet   |
-             |  Structured Data |
-             +------------------+
-                      |
-                      v
-             +------------------+
-             |       Gold       |
-             | Analytics Tables |
-             | (Future Work)    |
-             +------------------+
+                        +--------------------+      +--------------------+
+            |   RecentChanges    |      |    Pageviews Top   |
+            |     SSE Stream     |      |      REST API      |
+            +--------------------+      +--------------------+
+                     |                          |
+                     +-----------+--------------+
+                                 |
+                                 v
+                        +------------------+
+                        |      Bronze      |
+                        |   Raw JSON/JSONL |
+                        | Partitioned Data |
+                        +------------------+
+                                 |
+                                 v
+                        +------------------+
+                        |      Silver      |
+                        |   Clean Parquet  |
+                        |  Structured Data |
+                        +------------------+
+                                 |
+                                 v
+                        +------------------+
+                        |       Gold       |
+                        |  Analytics Tables|
+                        |  DuckDB Queries  |
+                        +------------------+
+                                 |
+                                 v
+                        +------------------+
+                        |   Orchestration  |
+                        |     Prefect      |
+                        |   Pipeline Flow  |
+                        +------------------+
 ```
 ## Project Structure
 
