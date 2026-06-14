@@ -28,9 +28,21 @@ The project follows a layered data design:
 - **Gold**: analytics-ready datasets built with DuckDB
 
 ## Architecture Diagram
-```
-
-                        +--------------------+      +--------------------+
+```                               |
+                                 
+                        +------------------+
+                        |   Orchestration  |
+                        |     Prefect      |
+                        |   Pipeline Flow  |
+                        +------------------+
+                                 |
+                                 v
+                   +-------------+--------------+
+                   |                            |
+                   |                            |
+                   |                            |
+                   v                            v
+            +--------------------+      +--------------------+
             |   RecentChanges    |      |    Pageviews Top   |
             |     SSE Stream     |      |      REST API      |
             +--------------------+      +--------------------+
@@ -57,13 +69,7 @@ The project follows a layered data design:
                         |  Analytics Tables|
                         |  DuckDB Queries  |
                         +------------------+
-                                 |
-                                 v
-                        +------------------+
-                        |   Orchestration  |
-                        |     Prefect      |
-                        |   Pipeline Flow  |
-                        +------------------+
+                         
 
 
 ```
