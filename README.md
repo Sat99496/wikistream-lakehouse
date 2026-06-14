@@ -48,7 +48,13 @@ The project follows a layered data design:
 
 ## Architecture Diagram
 ```                               |
-                                 
+                        +------------------+
+                        |      Docker      |
+                        |  Containerized   |
+                        |    Execution     |
+                        +---------+--------+
+                                  |
+                                  v         
                         +------------------+
                         |   Orchestration  |
                         |     Prefect      |
