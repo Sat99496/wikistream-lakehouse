@@ -10,13 +10,31 @@ The pipeline stores raw data in a Bronze layer and transforms it into structured
 
 ## Project Goal
 
-The goal of this project is to practice and demonstrate:
+WikiStream Lakehouse demonstrates how real-time event streams and API-based datasets can be ingested, transformed, and organised using a modern lakehouse architecture. The project applies common data engineering patterns including streaming ingestion, layered storage design, partitioned parquet datasets, orchestration, and analytical data modelling.
 
-- stream and API ingestion
-- partitioned data lake storage
-- idempotent pipeline design
-- Bronze to Silver transformations
-- parquet-based analytics workflows
+## Technologies
+
+- Python
+- Prefect
+- DuckDB
+- Pandas
+- PyArrow
+- Wikimedia SSE Stream
+- Wikimedia REST API
+- Parquet
+- Lakehouse Architecture
+
+ ## Data Engineering Concepts Demonstrated
+
+- Streaming Data Ingestion
+- REST API Integration
+- Incremental Processing
+- Idempotent Pipeline Design
+- Data Lake Partitioning
+- Bronze-Silver-Gold Architecture
+- Parquet-based Storage
+- Workflow Orchestration
+- Analytical Data Modelling 
 
 
 ## Architecture
