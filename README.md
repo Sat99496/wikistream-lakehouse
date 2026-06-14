@@ -91,7 +91,7 @@ The project follows a layered data design:
                                  v
                         +------------------+
                         |       Gold       |
-                        |  Analytics Tables|
+                        |  Analytics layer |
                         |  DuckDB Queries  |
                         +------------------+
                          
