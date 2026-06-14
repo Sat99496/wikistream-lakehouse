@@ -23,6 +23,7 @@ WikiStream Lakehouse demonstrates how real-time event streams and API-based data
 - Wikimedia REST API
 - Parquet
 - Lakehouse Architecture
+- Docker
 
  ## Data Engineering Concepts Demonstrated
 
