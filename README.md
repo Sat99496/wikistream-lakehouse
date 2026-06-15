@@ -123,21 +123,24 @@ wikistream-lakehouse/
 │   ├── transform/
 │   │   ├── recentchanges_to_parquet.py
 │   │   ├── pageviews_top_to_parquet.py
+│   │   ├── bronze_to_silver.py
 │   │   └── bronze_to_silver_latest.py
 │   ├── gold/
 │   │   ├── pageviews_daily_top.py
 │   │   ├── edits_per_hour.py
 │   │   ├── bot_vs_human.py
 │   │   └── run_gold.py
-│   ├── pipeline/
-│   │   ├── run_pipeline.py
-│   │   └── prefect_flow.py
 │   └── query/
 │       └── duckdb_queries.py
+├── images/
+│   └── WikiStream_Lakehouse_Architecture_diagram.png
 ├── data/
 │   ├── bronze/
 │   ├── silver/
 │   └── gold/
+├── data_samples/
+├── Dockerfile
+├── .dockerignore
 ├── requirements.txt
 ├── .gitignore
 └── README.md
