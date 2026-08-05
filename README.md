@@ -223,10 +223,6 @@ updated.
 
 It also supports controlled backfills for pageview data.
 
-> Note: Update this section so that it describes the exact behaviour implemented
-> in the code. Do not claim duplicate prevention or checkpointing unless the
-> relevant checks are present.
-
 ---
 
 ## Data Quality
@@ -246,7 +242,7 @@ Current or planned validation checks include:
 Invalid data should not be promoted from Bronze to Silver or from Silver to
 Gold.
 
-> Remove any validation item that is not currently implemented.
+
 
 ---
 
@@ -300,7 +296,7 @@ wikistream-lakehouse/
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/wikistream-lakehouse.git
+git clone https://github.com/Sat99496/wikistream-lakehouse.git
 cd wikistream-lakehouse
 ```
 
@@ -409,8 +405,7 @@ docker run --rm `
 The volume mount keeps generated Bronze, Silver, and Gold data available on
 the host machine after the container stops.
 
-> Confirm that `/app/data` matches the working directory configured in your
-> Dockerfile.
+
 
 ---
 
@@ -435,8 +430,7 @@ python -m src.ingest.backfill_pageviews \
   --end-date 2026-01-07
 ```
 
-> Keep the example with date arguments only if your script actually supports
-> those options.
+
 
 ---
 
@@ -541,27 +535,6 @@ pytest -v
 
 ---
 
-## Future Improvements
-
-Planned improvements include:
-
-- Add unit and integration tests
-- Add GitHub Actions for continuous integration
-- Add structured logging
-- Add additional Prefect retry policies
-- Add configurable SSE checkpoints
-- Add automated schema validation
-- Add pipeline metrics and record-count reporting
-- Add more detailed data-quality checks
-- Store Bronze and Silver data in Amazon S3
-- Use AWS Glue or PySpark for larger-scale transformations
-- Query cloud datasets through Amazon Athena
-- Add Apache Iceberg table support
-- Create a Power BI dashboard from the Gold datasets
-- Add monitoring and alerting for pipeline failures
-
----
-
 ## Cloud Deployment Design
 
 The current project runs locally using Docker. A possible AWS deployment could
@@ -599,16 +572,3 @@ This project provided practical experience with:
 - Containerising a data pipeline
 - Designing pipelines for repeatable execution
 
----
-
-## Licence
-
-Add the licence used by the repository.
-
-Example:
-
-```text
-MIT License
-```
-
-See the `LICENSE` file for details.
