@@ -420,14 +420,14 @@ Example command:
 python -m src.ingest.backfill_pageviews
 ```
 
-Document the accepted arguments if the script supports configurable dates.
 
 Example:
 
 ```bash
+```bash
 python -m src.ingest.backfill_pageviews \
-  --start-date 2026-01-01 \
-  --end-date 2026-01-07
+  --start 2026-01-01 \
+  --end 2026-01-07
 ```
 
 
@@ -459,65 +459,20 @@ ORDER BY edit_count DESC;
 ```
 
 
----
 
-## Example Outputs
+## Pipeline Execution
 
-### Bot versus Human Editing Activity
+The pipeline is orchestrated using Prefect. The screenshot below shows a successful execution of the Bronze-to-Silver transformation followed by Gold dataset generation.
 
-```text
-contributor_type | edit_count
------------------|-----------
-human            | ...
-bot              | ...
-```
-
-### Edits per Hour
-
-```text
-edit_hour | edit_count
-----------|-----------
-00        | ...
-01        | ...
-02        | ...
-```
-
-### Daily Top Pageviews
-
-```text
-date       | page_title       | views | rank
------------|------------------|-------|-----
-YYYY-MM-DD | Example article  | ...   | ...
-```
-
-
+![Prefect Flow Run](images/prefect-flow-run.png)
 
 ---
 
+## Example Query Results
 
-### Prefect Flow Run
+The following output shows analytical queries executed against the generated Gold datasets using DuckDB.
 
-```markdown
-![Successful Prefect flow](images/prefect-flow-run.png)
-```
-
-### Generated Lakehouse Layers
-
-```markdown
-![Bronze Silver and Gold outputs](images/lakehouse-output.png)
-```
-
-### DuckDB Query Results
-
-```markdown
-![DuckDB query results](images/duckdb-query-results.png)
-```
-
----
-
-```bash
-pytest -v
-```
+![DuckDB Query Results](images/duckdb-query-results.png)
 
 ---
 
